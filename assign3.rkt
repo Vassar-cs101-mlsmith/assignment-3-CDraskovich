@@ -4,7 +4,7 @@
 ; CMPU-101 
 ; Fall 2018
 ; Assign 3
-; <your name> 
+; <Casey Draskovich> 
 ;
 ; Description: Uses a list of bouncing balls to animate many balls
 ; of different sizes and colors, all moving in the same scene at 
@@ -49,14 +49,35 @@
 ; if you like to define the rest.
 (define BALL-AT-LEFT 
   (make-ball (circle (+ RADIUS 4) "solid" "teal")
+             (+ RADIUS 4) (/ HEIGHT 2) -4 4))
+
+;
+;
+(define BALL-AT-RIGHT 
+  (make-ball (circle (- RADIUS 4) "solid" "orange")
+             (+ RADIUS 4) (/ HEIGHT 2) -4 4))
+
+;
+;
+(define BALL-AT-TOP 
+  (make-ball (circle (+ RADIUS 10) "solid" "pink")
+             (+ RADIUS 4) (/ HEIGHT 2) -4 4))
+
+;
+;
+(define BALL-AT-BOTTOM 
+  (make-ball (circle (- RADIUS 8) "solid" "blue")
              (+ RADIUS 4) (/ HEIGHT 2) -4 4)) 
+
+
+
 
 
 ; Define INIT-LOB to be a list-of-balls:
 ; You will use this to be the initial state of the world.
 ; I've defined it to be the empty list, but you should define it
 ; to contain the four example ball CONSTANTS you just defined. 
-(define INIT-LOB '()) 
+(define INIT-LOB (list BALL-AT-LEFT BALL-AT-BOTTOM BALL-AT-RIGHT BALL-AT-TOP)) 
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -157,7 +178,7 @@
 ; Once you've implemented move-list-of-balls, uncomment on-tick below.
 (define (main w)
   (big-bang w
-            ;(on-tick move-list-of-balls 1/28) 
+            (on-tick move-list-of-balls 1/28) 
             (to-draw render-balls)))
 
 ; Run program automatically, or type this in Interactions Pane:
